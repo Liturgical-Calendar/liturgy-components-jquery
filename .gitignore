@@ -1,0 +1,14 @@
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+examples/webpack-example/.pnp.*
+examples/webpack-example/.yarn/*
+!examples/webpack-example/.yarn/patches
+!examples/webpack-example/.yarn/plugins
+!examples/webpack-example/.yarn/releases
+!examples/webpack-example/.yarn/sdks
+!examples/webpack-example/.yarn/versions

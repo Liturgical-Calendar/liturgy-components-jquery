@@ -1,0 +1,10 @@
+/**
+ * Calendars Select Plugin
+ * @author [John Romano D'Orazio](https://github.com/JohnRDOrazio)
+ * @license Apache-2.0
+ * @version 1.0.0
+ * @see https://github.com/Liturgical-Calendar/liturgy-components-jquery
+ *
+ * Description: Creates a select menu populated with available liturgical calendars from the Liturgical Calendar API
+ * Usage: $('.calendars-select').liturgicalCalendarsSelect();
+ */

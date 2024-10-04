@@ -8,7 +8,18 @@
  * Description: Creates a select menu populated with available liturgical calendars from the Liturgical Calendar API
  * Usage: $('.calendars-select').liturgicalCalendarsSelect();
  */
-
+(function(factory) {
+    if (typeof define === 'function' && define.amd) {
+      // AMD
+      define(['jquery'], factory);
+    } else if (typeof module === 'object' && module.exports) {
+      // CommonJS
+      module.exports = factory(require('jquery'));
+    } else {
+      // Browser globals
+      factory(jQuery);
+    }
+}
 ( function ( $ ) {
     let apiResults = null;
 
@@ -43,7 +54,7 @@
         }
 
         addNationOption( nationalCalendar, selected = false ) {
-            let option = `<option data-calendartype="national" value="${nationalCalendar.calendar_id}"${selected ? ' selected' : ''}>${this.#countryNames.of( nationalCalendar.country_iso )}</option>`;
+            let option = `<option data-calendartype="national" value="${nationalCalendar.calendar_id}"${selected ? ' selected' : ''}>${this.#countryNames.of( nationalCalendar.calendar_id )}</option>`;
             this.#nationOptions.push( option );
         }
         addDioceseOption( item ) {
@@ -63,14 +74,14 @@
                 this.addDioceseOption( diocesanCalendarObj );
             } );
 
-            CalendarSelect.#nationalCalendars.sort( ( a, b ) => this.#countryNames.of( a.country_iso ).localeCompare( this.#countryNames.of( b.country_iso ) ) );
+            CalendarSelect.#nationalCalendars.sort( ( a, b ) => this.#countryNames.of( a.calendar_id ).localeCompare( this.#countryNames.of( b.calendar_id ) ) );
             CalendarSelect.#nationalCalendars.forEach( nationalCalendar => {
                 if ( false === CalendarSelect.hasNationalCalendarWithDioceses( nationalCalendar.calendar_id ) ) {
                     // This is the first time we call CalendarSelect.addNationOption().
                     // This will ensure that the VATICAN (a nation without any diocese) will be added as the first option.
                     // In theory any other nation for whom no dioceses are defined will be added here too,
                     // so we will ensure that the VATICAN is always the default selected option
-                    if ( 'VATICAN' === nationalCalendar.calendar_id ) {
+                    if ( 'VA' === nationalCalendar.calendar_id ) {
                         this.addNationOption( nationalCalendar, true );
                     } else {
                         this.addNationOption( nationalCalendar );
@@ -80,10 +91,10 @@
 
             // now we can add the options for the nations in the #calendarNationsWithDiocese list
             // that is to say, nations that have dioceses
-            CalendarSelect.#nationalCalendarsWithDioceses.sort( ( a, b ) => this.#countryNames.of( a.country_iso ).localeCompare( this.#countryNames.of( b.country_iso ) ) );
+            CalendarSelect.#nationalCalendarsWithDioceses.sort( ( a, b ) => this.#countryNames.of( a.calendar_id ).localeCompare( this.#countryNames.of( b.calendar_id ) ) );
             CalendarSelect.#nationalCalendarsWithDioceses.forEach( nationalCalendar => {
                 this.addNationOption( nationalCalendar );
-                let optGroup = `<optgroup label="${this.#countryNames.of( nationalCalendar.country_iso )}">${this.#dioceseOptions[ nationalCalendar.calendar_id ].join( '' )}</optgroup>`;
+                let optGroup = `<optgroup label="${this.#countryNames.of( nationalCalendar.calendar_id )}">${this.#dioceseOptions[ nationalCalendar.calendar_id ].join( '' )}</optgroup>`;
                 this.#dioceseOptionsGrouped.push( optGroup );
             } );
         }
@@ -162,5 +173,6 @@
                 $element.replaceWith( $select );
             }
         } );
-    };
-} )( jQuery );
+    }
+    return $;
+}));

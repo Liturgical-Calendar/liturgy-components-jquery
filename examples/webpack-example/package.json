@@ -1,0 +1,26 @@
+{
+    "packageManager": "yarn@4.5.0",
+    "name": "jquery-liturgical-calendars-select-webpack-example",
+    "version": "1.0.0",
+    "description": "A jQuery plugin that creates an html select populated with liturgical calendars supported by the Liturgical Calendar API",
+    "main": "main.js",
+    "scripts": {
+        "test": "jest",
+        "build": "yarn build"
+    },
+    "keywords": [
+        "jquery",
+        "plugin"
+    ],
+    "author": "John R. D'Orazio <priest@johnromanodorazio.com",
+    "license": "MIT",
+    "dependencies": {
+        "jquery": "^3.7.1",
+        "liturgical-calendars-select": "../.."
+    },
+    "devDependencies": {
+        "jest": "^29.7.0",
+        "webpack": "^5.95.0",
+        "webpack-cli": "^5.1.4"
+    }
+}
