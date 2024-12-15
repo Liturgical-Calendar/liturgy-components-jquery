@@ -2927,10 +2927,10 @@ __metadata:
 
 "liturgical-calendars-select@file:../..::locator=jquery-liturgical-calendars-select-webpack-example%40workspace%3A.":
   version: 1.0.0
-  resolution: "liturgical-calendars-select@file:../..#../..::hash=6d352f&locator=jquery-liturgical-calendars-select-webpack-example%40workspace%3A."
+  resolution: "liturgical-calendars-select@file:../..#../..::hash=2d96c0&locator=jquery-liturgical-calendars-select-webpack-example%40workspace%3A."
   dependencies:
     jquery: "npm:^3.7.1"
-  checksum: 10c0/3cadc20d210ab8e53c33a18170b72003daa012a7723cac856b09dc57268af84801e39e20cfc5910e52ad828e56c0a0431796ce6a92e25ed279ae80351badc64a
+  checksum: 10c0/7c9f33f2bcaad68ca1e6128599cc8fc2d971f4462b8eff39ff952904638f535edbd1674cb0515f6d8dad562959b67b218b999fc6d073b5287e79577afceeaee9
   languageName: node
   linkType: hard
 

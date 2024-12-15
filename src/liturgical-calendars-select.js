@@ -110,19 +110,17 @@
 
     $.fn.liturgicalCalendarsSelect = function ( options ) {
         const defaults = {
-            apiVersion: 'dev',
+            apiUrl: 'https://litcal.johnromanodorazio.com/api/dev',
             selectClass: '',
-            filter: 'none', //dioceses, none
+            filter: 'none', //nations, dioceses, none
             locale: 'en'
         };
 
         const calendarSelect = {};
 
         return this.each( function () {
-            console.log( this.id );
             const $element = $( this );
             const settings = $.extend({}, defaults, options, $element.data());
-            console.log(`Settings: ${JSON.stringify(settings)}`);
             let $select = $( '<select/>' );
             if (this.classList.length) {
                 $select.addClass( this.className );
@@ -139,7 +137,7 @@
             if ( null === apiResults ) {
                 $.ajax( {
                     type: 'GET',
-                    url: `https://litcal.johnromanodorazio.com/api/${settings.apiVersion}/calendars`,
+                    url: `${settings.apiUrl}/calendars`,
                     async: false,
                     success: function ( data ) {
                         apiResults = data;
@@ -161,7 +159,6 @@
             }
 
             function populateSelect() {
-                console.log( `current settings: ${JSON.stringify( settings )}` );
                 if ( settings.filter === 'nations' ) {
                     $select.html( calendarSelect[settings.locale].nationsInnerHtml );
                 } else if ( settings.filter === 'dioceses' ) {

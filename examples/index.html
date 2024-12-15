@@ -3,46 +3,46 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Liturgy Components</title>
+    <title>Liturgy Components - jQuery plugins</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-    <h1>jQuery plugins for liturgical calendar components</h1>
+    <h1>Liturgical calendar components - jQuery Calendars Select plugin</h1>
 
     <h3>Liturgical calendars select (English)</h3>
     <div>
-      <label>National calendars (English)</label>
-      <select id="litcal_en_nations" class="litcal" data-locale="en" data-filter="nations"></select>
+      <label for="litcal_en_nations">National calendars (English)</label>
+      <div id="litcal_en_nations" class="litcal-calendars-select" data-locale="en" data-filter="nations"></div>
     </div>
     <div>
       <label for="litcal_en_dioceses">Diocesan calendars (English)</label>
-      <select id="litcal_en_dioceses" class="litcal" data-locale="en" data-filter="dioceses"></select>
+      <div id="litcal_en_dioceses" class="litcal-calendars-select" data-locale="en" data-filter="dioceses"></div>
     </div>
     <div>
       <label for="litcal_en">National and diocesan calendars (English)</label>
-      <select id="litcal_en" class="litcal" data-locale="en"></select>
+      <div id="litcal_en" class="litcal-calendars-select" data-locale="en"></div>
     </div>
 
     <h3>Liturgical calendars select (Italian)</h3>
     <div>
       <label for="litcal_it_nations">National liturgical calendars (Italian)</label>
-      <select id="litcal_it_nations" class="litcal" data-locale="it" data-filter="nations"></select>
+      <div id="litcal_it_nations" class="litcal-calendars-select" data-locale="it" data-filter="nations"></div>
     </div>
     <div>
       <label for="litcal_it_dioceses">Diocesan liturgical calendars (Italian)</label>
-      <select id="litcal_it_dioceses" class="litcal" data-locale="it" data-filter="dioceses"></select>
+      <div id="litcal_it_dioceses" class="litcal-calendars-select" data-locale="it" data-filter="dioceses"></div>
     </div>
     <div>
       <label for="litcal_it">National and diocesan calendars (Italian)</label>
-      <select id="litcal_it" class="litcal" data-locale="it"></select>
+      <div id="litcal_it" class="litcal-calendars-select" data-locale="it"></div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <!-- <script src="../src/liturgical-calendars-select.js"></script> -->
     <script src="../dist/liturgical-calendars-select.min.js"></script>
     <script>
       $(document).ready(function() {
-        $('.litcal').liturgicalCalendarsSelect({
-          apiVersion: 'dev',
+        $('.litcal-calendars-select').liturgicalCalendarsSelect({
+          apiUrl: 'http://localhost:8000',
           selectClass: 'my-select'
         });
       });

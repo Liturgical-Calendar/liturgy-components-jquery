@@ -2,8 +2,8 @@ import 'liturgical-calendars-select';
 
 (function($) {
   $(document).ready(function() {
-    $('.litcal').liturgicalCalendarsSelect({
-      apiVersion: 'dev',
+    $('.litcal-calendars-select').liturgicalCalendarsSelect({
+      apiUrl: 'http://localhost:8000',
       selectClass: 'my-select'
     });
   });
