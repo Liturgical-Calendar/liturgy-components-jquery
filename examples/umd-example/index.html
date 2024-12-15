@@ -37,11 +37,18 @@
       <select id="litcal_it" class="litcal-calendars-select" data-locale="it"></select>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="../../dist/liturgical-calendars-select.bundle.js"></script>
+    <script src="../../dist/liturgy-components-jquery.bundle.js"></script>
     <script>
+      if (typeof LitCalApiClient === 'undefined') {
+        if (typeof LiturgicalCalendarComponents === 'undefined') {
+          console.error('LitCalApiClient not available. Please include the litcal-api-client.js file.');
+        } else {
+          window.LitCalApiClient = LiturgicalCalendarComponents.LitCalApiClient;
+        }
+      }
+      LitCalApiClient.apiUrl = 'http://localhost:8000';
       $(document).ready(function() {
         $('.litcal-calendars-select').liturgicalCalendarsSelect({
-          apiUrl: 'http://localhost:8000',
           selectClass: 'my-select'
         });
       });

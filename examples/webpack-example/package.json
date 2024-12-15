@@ -16,7 +16,7 @@
     "license": "MIT",
     "dependencies": {
         "jquery": "^3.7.1",
-        "liturgical-calendars-select": "../.."
+        "liturgy-components-jquery": "../.."
     },
     "devDependencies": {
         "jest": "^29.7.0",

@@ -1,15 +1,16 @@
 const path = require('path');
 
 module.exports = {
-  entry: './src/liturgical-calendars-select.js', // Adjust this to the location of your main JS file
+  entry: './src/index.js',
   output: {
-    filename: 'liturgical-calendars-select.bundle.js',
-    path: path.resolve(__dirname, 'dist'), // Adjust output directory as needed
-    library: 'LiturgicalCalendarsSelect', // Optional, if you want to expose a global variable
-    libraryTarget: 'umd'  // Universal Module Definition
+    filename: 'liturgy-components-jquery.bundle.js',
+    path: path.resolve(__dirname, 'dist'),
+    library: 'LiturgicalCalendarComponents',
+    libraryTarget: 'umd',
+    globalObject: 'this'
   },
   mode: 'production',
   externals: {
-      jquery: 'jQuery'
+    jquery: 'jQuery'
   }
 }

@@ -37,12 +37,11 @@
       <div id="litcal_it" class="litcal-calendars-select" data-locale="it"></div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <!-- <script src="../src/liturgical-calendars-select.js"></script> -->
-    <script src="../dist/liturgical-calendars-select.min.js"></script>
+    <script src="../dist/liturgy-components-jquery.min.js"></script>
     <script>
+      LitCalApiClient.apiUrl = 'http://localhost:8000';
       $(document).ready(function() {
         $('.litcal-calendars-select').liturgicalCalendarsSelect({
-          apiUrl: 'http://localhost:8000',
           selectClass: 'my-select'
         });
       });

@@ -2826,7 +2826,7 @@ __metadata:
   dependencies:
     jest: "npm:^29.7.0"
     jquery: "npm:^3.7.1"
-    liturgical-calendars-select: ../..
+    liturgy-components-jquery: ../..
     webpack: "npm:^5.95.0"
     webpack-cli: "npm:^5.1.4"
   languageName: unknown
@@ -2925,12 +2925,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"liturgical-calendars-select@file:../..::locator=jquery-liturgical-calendars-select-webpack-example%40workspace%3A.":
+"liturgy-components-jquery@file:../..::locator=jquery-liturgical-calendars-select-webpack-example%40workspace%3A.":
   version: 1.0.0
-  resolution: "liturgical-calendars-select@file:../..#../..::hash=2d96c0&locator=jquery-liturgical-calendars-select-webpack-example%40workspace%3A."
-  dependencies:
-    jquery: "npm:^3.7.1"
-  checksum: 10c0/7c9f33f2bcaad68ca1e6128599cc8fc2d971f4462b8eff39ff952904638f535edbd1674cb0515f6d8dad562959b67b218b999fc6d073b5287e79577afceeaee9
+  resolution: "liturgy-components-jquery@file:../..#../..::hash=3968ac&locator=jquery-liturgical-calendars-select-webpack-example%40workspace%3A."
+  peerDependencies:
+    jquery: ">=3.0.0"
+  checksum: 10c0/5b044f1152ae12b821bffbdb92a0c39add76e0b487d89c3abdc9a5991c5d8f5aeba53c80fc51cbbd8464fc85521e652870e7d9def45430541dd532eeea0c1c41
   languageName: node
   linkType: hard
 

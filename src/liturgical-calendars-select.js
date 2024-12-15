@@ -110,7 +110,6 @@
 
     $.fn.liturgicalCalendarsSelect = function ( options ) {
         const defaults = {
-            apiUrl: 'https://litcal.johnromanodorazio.com/api/dev',
             selectClass: '',
             filter: 'none', //nations, dioceses, none
             locale: 'en'
@@ -135,22 +134,32 @@
             }
 
             if ( null === apiResults ) {
-                $.ajax( {
-                    type: 'GET',
-                    url: `${settings.apiUrl}/calendars`,
-                    async: false,
-                    success: function ( data ) {
-                        apiResults = data;
-                        const { litcal_metadata } = apiResults;
-                        const { national_calendars, diocesan_calendars } = litcal_metadata;
+                if (typeof LitCalApiClient === 'undefined') {
+                    if (typeof LiturgicalCalendarComponents === 'undefined') {
+                        throw new Error('The LitCalApiClient class is not available. Please include the litcal-api-client.js file.');
+                    }
+                }
+                if ( null === LitCalApiClient.metadata ) {
+                    LitCalApiClient.init().then(result => {
+                        if (result === false) {
+                            throw new Error('The LitCalApiClient class was unable to initialize.');
+                        }
+                        if (typeof result !== 'object') {
+                            throw new Error('The LitCalApiClient class was unable to initialize: expected object, found ' + typeof result + '.');
+                        }
+                        if (false === result.hasOwnProperty('national_calendars') || false === result.hasOwnProperty('diocesan_calendars')) {
+                            throw new Error('The LitCalApiClient class was unable to initialize: expected object with `national_calendars` and `diocesan_calendars` properties.');
+                        }
+                        apiResults = LitCalApiClient.metadata;
+                        const { national_calendars, diocesan_calendars } = apiResults;
                         CalendarSelect.setNationalCalendars( national_calendars );
                         CalendarSelect.setDiocesanCalendars( diocesan_calendars );
                         if( false === calendarSelect[settings.locale].optionsBuilt ) {
                             calendarSelect[settings.locale].buildAllOptions();
                         }
                         populateSelect();
-                    }
-                } );
+                    });
+                }
             } else {
                 if( false === calendarSelect[settings.locale].optionsBuilt ) {
                     calendarSelect[settings.locale].buildAllOptions();
